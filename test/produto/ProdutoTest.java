@@ -11,6 +11,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ProdutoTest {
@@ -19,20 +20,20 @@ public class ProdutoTest {
 	
 	@BeforeEach
 	public void inicializa() {
-		livro = new Produto("Introdução ao Teste de Software", 100.00);
+		livro = new Produto("Introduï¿½ï¿½o ao Teste de Software", 100.00);
 	}
 	
 	@Test
 	public void testCriaProduto() {
 		Assertions.assertAll("livro",
-				() -> assertEquals("Introdução ao Teste de Software", livro.getNome()),
+				() -> assertEquals("Introduï¿½ï¿½o ao Teste de Software", livro.getNome()),
 				() -> assertTrue(100.00 == livro.getPreco())						
 				);
 	}
 	
 	@Test
 	public void testProdutosIguais() {
-		Produto livro2 = new Produto("Introdução ao Teste de Software", 90.00);
+		Produto livro2 = new Produto("Introduï¿½ï¿½o ao Teste de Software", 90.00);
 		
 		assertNotSame(livro, livro2);
 		
@@ -45,5 +46,20 @@ public class ProdutoTest {
 		assertThat(livro.getNome(), containsString("Teste"));
 		assertThat(livro, instanceOf(Produto.class));
 	}
+
+    @DisplayName("Deve alterar o nome do produto quando for executado um set na entidade")
+    @Test
+    void test1(){
+        String expected= "DevOps HandBook";
+        livro.setNome(expected);
+        Assertions.assertEquals(expected, livro.getNome());
+    }
+    @DisplayName("Deve alterar o valor do produto quando for executado um set na entidade")
+    @Test
+    void test2(){
+        double expected= 100;
+        livro.setPreco(expected);
+        Assertions.assertEquals(expected, livro.getPreco());
+    }
 
 }
