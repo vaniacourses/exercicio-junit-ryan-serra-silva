@@ -2,9 +2,7 @@ package carrinho;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import produto.Produto;
-import produto.ProdutoNaoEncontradoException;
+import produto.*;
 
 public class Carrinho {
 	

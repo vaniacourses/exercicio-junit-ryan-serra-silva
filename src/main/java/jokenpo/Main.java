@@ -1,3 +1,4 @@
+package jokenpo;
 public class Main {
 
     /**
